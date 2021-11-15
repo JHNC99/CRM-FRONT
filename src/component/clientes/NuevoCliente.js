@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import swal from "sweetalert";
 //Importar  portart cliente
 import clienteAxios from "../config/Config";
 function NuevoCliente() {
@@ -42,9 +43,13 @@ function NuevoCliente() {
     //enviar peticion
     clienteAxios.post("/clientes", cliente).then((res) => {
       console.log(res);
+      swal({
+        title: "Good job!",
+        text: "You clicked the button!",
+        icon: "success",
+      });
     });
   };
-
   return (
     <Fragment>
       <h2>Nuevo cliente</h2>
@@ -104,7 +109,7 @@ function NuevoCliente() {
         <div className="enviar">
           <input
             type="submit"
-            class="btn btn-azul"
+            className="btn btn-azul"
             value="Agregar Cliente"
             disabled={validarCliente()}
           />
